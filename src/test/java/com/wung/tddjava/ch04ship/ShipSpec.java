@@ -102,5 +102,18 @@ public class ShipSpec {
 		Assert.assertEquals(ship.getPlanet(), planet);
 	}
 	
+	public void givenDirectionEastAndMaxXWhenReceiveCommandsFThenWrap() {
+		location.setDirection(Direction.EAST);
+		location.getPoint().setX(planet.getMax().getX());
+		ship.receiveCommands("f");
+		Assert.assertEquals(ship.getLocation().getX(), 1);
+	}
+	
+	public void givenDirectionEastAndXEquals1WhenReceiveCommandsBThenWrap() {
+		location.setDirection(Direction.EAST);
+		location.getPoint().setX(1);
+		ship.receiveCommands("b");
+		Assert.assertEquals(ship.getLocation().getX(), ship.getPlanet().getMax().getX());
+	}
 	
 }
