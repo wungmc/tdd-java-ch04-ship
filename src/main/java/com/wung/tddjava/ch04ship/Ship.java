@@ -37,7 +37,7 @@ public class Ship {
 	public String receiveCommands(String commands) {
 		StringBuilder result = new StringBuilder();
 		commands.chars().forEach(command -> {
-					boolean status = false;
+					boolean status = true;
 					switch (command) {
 						case 'f':
 							status= moveForward();

@@ -136,4 +136,14 @@ public class ShipSpec {
 		Assert.assertEquals(ship.getLocation(), expected);
 	}
 	
+	public void whenReceiveCommandsThenOForOKAndXForObstacle() {
+		// 在军舰当前位置的右侧增加一个障碍物
+		List<Point> objstacles = new ArrayList<>();
+		objstacles.add(new Point(location.getX() + 1, location.getY()));
+		planet.setObstacles(objstacles);
+		
+		String status = ship.receiveCommands("rflb");
+		Assert.assertEquals(status, "OXOO");
+	}
+	
 }
