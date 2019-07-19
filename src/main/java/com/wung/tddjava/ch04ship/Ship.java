@@ -1,17 +1,25 @@
 package com.wung.tddjava.ch04ship;
 
-import java.util.stream.IntStream;
-
 public class Ship {
 	
 	private Location location;
+	private Planet planet;
 	
 	public Ship(Location location) {
 		this.location = location;
 	}
 	
+	public Ship(Location location, Planet planet) {
+		this.location = location;
+		this.planet = planet;
+	}
+	
 	public Location getLocation() {
 		return location;
+	}
+	
+	public Planet getPlanet() {
+		return planet;
 	}
 	
 	public boolean moveForward() {

@@ -2,6 +2,9 @@ package com.wung.tddjava.ch04ship;
 
 import java.util.List;
 
+/**
+ * 地图（有边缘，即最大的X轴、Y轴）
+ */
 public class Planet {
 
     private final Point max;
