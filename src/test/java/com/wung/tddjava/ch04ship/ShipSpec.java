@@ -30,4 +30,21 @@ public class ShipSpec {
 		Assert.assertEquals(ship.getLocation(), location);
 	}
 	
+	public void whenShipMoveForwardThenForward() {
+		Location expected = location.copy();
+		expected.forward();
+		ship.moveForward();
+		Assert.assertEquals(ship.getLocation(), expected);
+	}
+	
+	
+	public void whenShipMoveBackwardThenBackware() {
+		Location expected = location.copy();
+		expected.backward();
+		ship.moveBackward();
+		Assert.assertEquals(ship.getLocation(), expected);
+	}
+	
+	
+	
 }
