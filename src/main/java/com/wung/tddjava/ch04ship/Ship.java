@@ -29,18 +29,24 @@ public class Ship {
 	}
 	
 	public void receiveCommands(String commands) {
-		if (commands.charAt(0) == 'f') {
-			moveForward();
+		char command = commands.charAt(0);
+		switch (command) {
+			case 'f':
+				moveForward();
+				break;
+			case 'b':
+				moveBackward();
+				break;
+			case 'l':
+				turnLeft();
+				break;
+			case 'r':
+				turnRight();
+				break;
+			default:
+				break;
 		}
-		else if (commands.charAt(0) == 'b') {
-			moveBackward();
-		}
-		else if (commands.charAt(0) == 'l') {
-			turnLeft();
-		}
-		else if (commands.charAt(0) == 'r') {
-			turnRight();
-		}
+
 	}
 	
 }
