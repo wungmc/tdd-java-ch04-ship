@@ -13,17 +13,17 @@ import org.testng.annotations.*;
 @Test
 public class ShipSpec {
 	
-	private int x = 10;
-	private int y = 20;
 	private Location location;
+	private Planet planet;
 	private Ship ship;
 	
 	
 	@BeforeMethod
 	public void beforeMethod() {
 		Direction direction = Direction.NORTH;
-		location = new Location(new Point(x, y), direction);
-		ship = new Ship(location);
+		location = new Location(new Point(21, 13), direction);
+		planet = new Planet(new Point(50, 50));
+		ship = new Ship(location, planet);
 	}
 	
 	public void whenInstantiatedThenLocationIsSet() {
@@ -99,9 +99,6 @@ public class ShipSpec {
 	}
 	
 	public void whenInstantiatedThenPlanetIsStored() {
-		Point max = new Point(50, 50);
-		Planet planet = new Planet(max);
-		ship = new Ship(location, planet);
 		Assert.assertEquals(ship.getPlanet(), planet);
 	}
 	
