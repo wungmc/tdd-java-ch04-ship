@@ -28,4 +28,19 @@ public class Ship {
 		location.turnRight();
 	}
 	
+	public void receiveCommands(String commands) {
+		if (commands.charAt(0) == 'f') {
+			moveForward();
+		}
+		else if (commands.charAt(0) == 'b') {
+			moveBackward();
+		}
+		else if (commands.charAt(0) == 'l') {
+			turnLeft();
+		}
+		else if (commands.charAt(0) == 'r') {
+			turnRight();
+		}
+	}
+	
 }
