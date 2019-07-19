@@ -1,5 +1,7 @@
 package com.wung.tddjava.ch04ship;
 
+import java.util.stream.IntStream;
+
 public class Ship {
 	
 	private Location location;
@@ -29,23 +31,25 @@ public class Ship {
 	}
 	
 	public void receiveCommands(String commands) {
-		char command = commands.charAt(0);
-		switch (command) {
-			case 'f':
-				moveForward();
-				break;
-			case 'b':
-				moveBackward();
-				break;
-			case 'l':
-				turnLeft();
-				break;
-			case 'r':
-				turnRight();
-				break;
-			default:
-				break;
-		}
+		commands.chars()
+				.forEach(command -> {
+					switch (command) {
+						case 'f':
+							moveForward();
+							break;
+						case 'b':
+							moveBackward();
+							break;
+						case 'l':
+							turnLeft();
+							break;
+						case 'r':
+							turnRight();
+							break;
+						default:
+							break;
+					}
+				});
 
 	}
 	
