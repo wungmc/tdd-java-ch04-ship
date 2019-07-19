@@ -3,6 +3,9 @@ package com.wung.tddjava.ch04ship;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * TestNG 与 JUnit 不同之处：
@@ -22,7 +25,7 @@ public class ShipSpec {
 	public void beforeMethod() {
 		Direction direction = Direction.NORTH;
 		location = new Location(new Point(21, 13), direction);
-		planet = new Planet(new Point(50, 50));
+		planet = new Planet(new Point(50, 50), new ArrayList<>());
 		ship = new Ship(location, planet);
 	}
 	
@@ -114,6 +117,23 @@ public class ShipSpec {
 		location.getPoint().setX(1);
 		ship.receiveCommands("b");
 		Assert.assertEquals(ship.getLocation().getX(), ship.getPlanet().getMax().getX());
+	}
+	
+	public void whenReceiveCommandsThenStopOnObstacle() {
+		// 在军舰当前位置的右侧增加一个障碍物
+		List<Point> objstacles = new ArrayList<>();
+		objstacles.add(new Point(location.getX() + 1, location.getY()));
+		planet.setObstacles(objstacles);
+		
+		Location expected = location.copy();
+		expected.turnRight();
+		// 这步注释掉，模拟有障碍物的情况
+		// expected.forward(new Point(0, 0), new ArrayList<>());
+		expected.turnLeft();
+		expected.backward(new Point(0, 0), new ArrayList<>());
+		
+		ship.receiveCommands("rflb");
+		Assert.assertEquals(ship.getLocation(), expected);
 	}
 	
 }
